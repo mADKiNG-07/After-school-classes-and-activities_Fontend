@@ -98,6 +98,7 @@ import { RouterLink, RouterView } from "vue-router";
         </div>
       </div>
       <div v-else class="container p-5">
+        <!-- Checkout page -->
         <div v-if="sortedCart.length === 0" class="container p-5">
           <button class="btn btn-warning" v-on:click="goToHome">
             Back to Home Page
@@ -132,7 +133,7 @@ import { RouterLink, RouterView } from "vue-router";
             </div>
           </div>
         </div>
-        <!-- Checkout page -->
+
         <h2>Checkout</h2>
         <div class="mb-3 mt-3">
           <p>
@@ -263,7 +264,8 @@ export default {
     // Update this method based on your existing methods
     async fetchLessons() {
       try {
-        const apiUrl = "http://after-school-classes-and-activit-env-1.eba-jnm2dueu.eu-north-1.elasticbeanstalk.com"; // Replace with your actual API URL
+        const apiUrl =
+          "http://after-school-classes-and-activit-env-1.eba-jnm2dueu.eu-north-1.elasticbeanstalk.com"; // Replace with your actual API URL
 
         const response = await fetch(`${apiUrl}/api/lessons`);
         if (!response.ok) {
@@ -285,7 +287,8 @@ export default {
     // update spaces (PUT)
     async updateLessonSpace(lessonId, newSpaces) {
       try {
-        const apiUrl = "http://after-school-classes-and-activit-env-1.eba-jnm2dueu.eu-north-1.elasticbeanstalk.com"; // Replace with your actual API URL
+        const apiUrl =
+          "http://after-school-classes-and-activit-env-1.eba-jnm2dueu.eu-north-1.elasticbeanstalk.com"; // Replace with your actual API URL
 
         const response = await fetch(`${apiUrl}/api/lessons/${lessonId}`, {
           method: "PUT",
@@ -382,13 +385,16 @@ export default {
           number: this.order.PhoneNumber,
           lesson: order,
         };
-        fetch("http://after-school-classes-and-activit-env-1.eba-jnm2dueu.eu-north-1.elasticbeanstalk.com/api/orders", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        })
+        fetch(
+          "http://after-school-classes-and-activit-env-1.eba-jnm2dueu.eu-north-1.elasticbeanstalk.com/api/orders",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+        )
           .then((response) => {
             if (!response.ok) {
               throw new Error(`HTTP error! Status: ${response.status}`);
